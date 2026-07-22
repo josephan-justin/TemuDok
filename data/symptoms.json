@@ -1,0 +1,78 @@
+[
+  {
+    "name": "Demam",
+    "SpecializationId": 1
+  },
+  {
+    "name": "Batuk",
+    "SpecializationId": 1
+  },
+  {
+    "name": "Pilek",
+    "SpecializationId": 1
+  },
+  {
+    "name": "Sakit Kepala",
+    "SpecializationId": 1
+  },
+  {
+    "name": "Gatal-gatal",
+    "SpecializationId": 2
+  },
+  {
+    "name": "Ruam Kulit",
+    "SpecializationId": 2
+  },
+  {
+    "name": "Jerawat",
+    "SpecializationId": 2
+  },
+  {
+    "name": "Sakit Tenggorokan",
+    "SpecializationId": 3
+  },
+  {
+    "name": "Sakit Telinga",
+    "SpecializationId": 3
+  },
+  {
+    "name": "Hidung Tersumbat",
+    "SpecializationId": 3
+  },
+  {
+    "name": "Nyeri Dada",
+    "SpecializationId": 4
+  },
+  {
+    "name": "Jantung Berdebar",
+    "SpecializationId": 4
+  },
+  {
+    "name": "Sesak Napas",
+    "SpecializationId": 4
+  },
+  {
+    "name": "Mata Merah",
+    "SpecializationId": 5
+  },
+  {
+    "name": "Mata Gatal",
+    "SpecializationId": 5
+  },
+  {
+    "name": "Penglihatan Kabur",
+    "SpecializationId": 5
+  },
+  {
+    "name": "Nyeri Perut",
+    "SpecializationId": 6
+  },
+  {
+    "name": "Mual dan Muntah",
+    "SpecializationId": 6
+  },
+  {
+    "name": "Gangguan Pencernaan",
+    "SpecializationId": 6
+  }
+]

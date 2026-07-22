@@ -1,0 +1,62 @@
+[
+  {
+    "name": "dr. Andi Pratama",
+    "imageUrl": "https://pin.it/42JQk93t9",
+    "SpecializationId": 1
+  },
+  {
+    "name": "dr. Siti Rahma",
+    "imageUrl": "https://pin.it/1g5xY86dv",
+    "SpecializationId": 1
+  },
+  {
+    "name": "dr. Budi Santoso, Sp.D.V.E",
+    "imageUrl": "https://pin.it/3ovAYEL0k",
+    "SpecializationId": 2
+  },
+  {
+    "name": "dr. Maya Putri, Sp.D.V.E",
+    "imageUrl": "https://pin.it/2Ewxuy2MW",
+    "SpecializationId": 2
+  },
+  {
+    "name": "dr. Rina Wijaya, Sp.T.H.T.B.K.L",
+    "imageUrl": "https://pin.it/6IoB0ssdi",
+    "SpecializationId": 3
+  },
+  {
+    "name": "dr. Dimas Saputra, Sp.T.H.T.B.K.L",
+    "imageUrl": "https://pin.it/7aLFmIylH",
+    "SpecializationId": 3
+  },
+  {
+    "name": "dr. Arif Setiawan, Sp.J.P",
+    "imageUrl": "https://pin.it/4ufH1F6b6",
+    "SpecializationId": 4
+  },
+  {
+    "name": "dr. Nadia Permata, Sp.J.P",
+    "imageUrl": "https://pin.it/7JrJtgwcq",
+    "SpecializationId": 4
+  },
+  {
+    "name": "dr. Fajar Nugroho, Sp.M",
+    "imageUrl": "https://pin.it/53OdPKMjF",
+    "SpecializationId": 5
+  },
+  {
+    "name": "dr. Dewi Anggraini, Sp.M",
+    "imageUrl": "https://pin.it/6PIUVYdEL",
+    "SpecializationId": 5
+  },
+  {
+    "name": "dr. Rizky Kurniawan, Sp.P.D",
+    "imageUrl": "https://pin.it/6hxBHUgW7",
+    "SpecializationId": 6
+  },
+  {
+    "name": "dr. Citra Lestari, Sp.P.D",
+    "imageUrl": "https://pin.it/3m4Lc6CSu",
+    "SpecializationId": 6
+  }
+]
