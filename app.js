@@ -5,6 +5,7 @@ const port = 3000;
 const routerAdmin = require('./routers/admin')
 const routerDoctor = require('./routers/doctor')
 
+
 app.use(express.static('public'))
 app.use('/assets', express.static('assets'))
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: false }))
 app.get('/',Controller.home);
 app.use('/admin',routerAdmin)
 app.use('/doctor',routerDoctor)
+
 
 
 
