@@ -24,6 +24,7 @@ router.get('/specialization/doctor/:specId/add', Controller.getdoctorAdd)
 router.post('/specialization/doctor/:specId/add', upload.single('imageUrl'), Controller.postdoctorAdd)
 router.get('/specialization/symptom/:specId', Controller.symptomListAdmin)
 router.post('/specialization/symptom/:specId/add', Controller.addSymptom)
+router.get('/specialization/symptom/:specId/delete/:simId', Controller.delSymptom)
 
 
 

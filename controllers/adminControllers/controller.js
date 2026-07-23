@@ -101,7 +101,7 @@ class Controller {
     static async symptomListAdmin(req,res){
         try {
             const {specId} = req.params
-            const {error,search} = req.query 
+            const {error,search,info} = req.query 
 
             let query = {
                 include : [Specialization],
@@ -120,7 +120,7 @@ class Controller {
             let data = await Symptom.findAll(query)
             // res.send(data)
             
-            res.render('./adminViews/symptomListAdmin',{data,specId,error})
+            res.render('./adminViews/symptomListAdmin',{data,specId,error,info})
             
         } catch (error) {
             console.log(error);
@@ -160,8 +160,11 @@ class Controller {
 
     static async postdoctorAdd(req,res){
         const {specId} = req.params
-        const {path} = req.file
         try {
+            if (!req.file) {
+                throw { name: 'custom', message: 'image required' }
+            }
+            const {path} = req.file
             const {name,imageUrl} = req.body
             await Doctor.create({
                 name,
@@ -175,13 +178,31 @@ class Controller {
             if (error.name === "SequelizeValidationError") {
                 error = error.errors.map(el => el.message)
                 res.redirect (`/admin/specialization/doctor/${specId}/add?error=${error}`)
+            }else if (error.name === 'custom' ){
+                error = error.message
+                res.redirect (`/admin/specialization/doctor/${specId}/add?error=${error}`)
+
             }
         }
 
     }
 
-
-
+    static async delSymptom(req,res){
+        const {specId,simId} = req.params
+        try {
+            let toDel = await Symptom.findByPk(simId)
+            await toDel.destroy()
+            res.redirect(`/admin/specialization/symptom/${specId}?info= symptomp named ${toDel.name} has been deleted`)
+        } catch (error) {
+            if (error.name === "SequelizeValidationError") {
+                error = error.errors.map(el => el.message)
+                res.redirect (`/admin/specialization/symptom/${specId}?error=${error}`)
+            }
+            console.log(error);
+            
+            res.send(error)
+        }
+    }
 
 
     

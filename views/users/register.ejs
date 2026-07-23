@@ -4,48 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - TemuDok</title>
+    <link rel="stylesheet" href="/register.css">
 </head>
 <body>
 
-    <h1>Daftar TemuDok</h1>
+    <div class="register-card">
+        <h1>Daftar TemuDok</h1>
 
-    <form action="/users/register" method="POST">
-        <div>
-            <label>Email</label>
-            <input type="email" name="email">
-        </div>
+        <form action="/users/register" method="POST">
 
-        <div>
-            <label>Password</label>
-            <input type="password" name="password">
-        </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Masukkan email"
+                    required
+                >
+            </div>
 
-        <div>
-            <label>Nama Lengkap</label>
-            <input type="text" name="fullName">
-        </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Masukkan password"
+                    required
+                >
+            </div>
 
-        <div>
-            <label>Tanggal Lahir</label>
-            <input type="date" name="birthDate">
-        </div>
+            <div class="form-group">
+                <label for="fullName">Nama Lengkap</label>
+                <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Masukkan nama lengkap"
+                    required
+                >
+            </div>
 
-        <div>
-            <label>Jenis Kelamin</label>
-            <select name="gender">
-                <option value="">-- Pilih Jenis Kelamin --</option>
-                <option value="Laki-laki">Laki-laki</option>
-                <option value="Perempuan">Perempuan</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label for="birthDate">Tanggal Lahir</label>
+                <input
+                    type="date"
+                    id="birthDate"
+                    name="birthDate"
+                    required
+                >
+            </div>
 
-        <button type="submit">Daftar</button>
-    </form>
+            <div class="form-group">
+                <label for="gender">Jenis Kelamin</label>
+                <select id="gender" name="gender" required>
+                    <option value="">-- Pilih Jenis Kelamin --</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+            </div>
 
-    <p>
-        Sudah punya akun?
-        <a href="/users/login">Login</a>
-    </p>
+            <button type="submit">Daftar</button>
+
+        </form>
+
+        <p>
+            Sudah punya akun?
+            <a href="/users/login">Login</a>
+        </p>
+    </div>
 
 </body>
 </html>
