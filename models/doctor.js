@@ -15,8 +15,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Doctor.init({
-    name: DataTypes.STRING,
-    imageUrl: DataTypes.STRING,
+    name: {
+      type : DataTypes.STRING,
+      allowNull: false,
+      validate : {
+        notNull: { msg: ' doctor Name is required' },
+        notEmpty: { msg: 'doctor Name is required' },
+      }
+    },
+    imageUrl: {
+      type : DataTypes.STRING,
+      allowNull: false,
+      validate : {
+        notNull: { msg: ' image required' },
+        notEmpty: { msg: 'image required' },
+      }
+    },
     SpecializationId: DataTypes.INTEGER
   }, {
     sequelize,

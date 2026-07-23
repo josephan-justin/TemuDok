@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <a href="/admin">back</a>
+        </div>
+        <div style="border: 1px solid black;">
+            <% if (error) { %>
+                <p><%= error %></p>
+            
+            <% } %>
+            <h4>add Symptom</h4>
+            <form action="/admin/specialization/symptom/<%= specId %>/add" method="post">
+                <label for="name">Symptom name : </label>
+                <input type="text" name="name">
+                <input type="submit" value="SUBMIT">
+            </form>
+
+        </div>
+
+        <div>
+            <h2><%= data[0].Specialization.name %></h2>
+        </div>
+        <div>
+            <form action="/admin/specialization/symptom/<%= specId %>" method="get">
+            <input type="text" name="search" placeholder="Search Name Here">
+            <input type="submit" value="Search">
+        </form>
+        </div>
+        <table>
+            <tr>
+                <th>No</th>
+                <th>Symptom</th>
+                <th>Action</th>
+            </tr>
+            <% data.forEach((el,i) => { %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= el.name %></td>
+                    <td>
+                        <a href="/dd">delete</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+    
+</body>
+</html>
