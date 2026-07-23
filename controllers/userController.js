@@ -2,14 +2,6 @@ const bcrypt = require('bcryptjs')
 const { User, Profile } = require('../models')
 
 class UserController {
-  static async home(req, res) {
-    try {
-      res.render('home')
-    } catch (error) {
-      res.send(error)
-    }
-  }
-
   static async getRegister(req, res) {
     try {
       res.render('users/register')
@@ -25,7 +17,7 @@ class UserController {
         const user = await User.create({email, password, role: 'user'})
         await Profile.create({fullName, birthDate, gender, UserId: user.id})
 
-        res.redirect('login')
+        res.redirect('/users/login')
         
     } catch (error) {
         res.send(error)
@@ -62,18 +54,27 @@ class UserController {
         if(user.role === 'admin'){
             res.redirect('/admin')
         } else if(user.role === 'doctor'){
-            res.redirect('doctors/appointments')
+            res.redirect('/doctor/appointments')
         } else{
             res.redirect('/')
         }
     } catch (error) {
         res.send(error)
-        
     }
   }
 
   static async logout(req, res){
+    try {
+        req.session.destroy(error => {
+            if(error){
+                return res.send(error)
+            }
 
+            res.redirect('/')
+        })
+    } catch (error) {
+        res.send(error)
+    }
   }
 }
 

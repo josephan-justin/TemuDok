@@ -13,7 +13,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }))
-app.use('/', userRouter)
+app.use('/users', userRouter)
 
 app.listen(3000, () => {
   console.log('Server running on port 3000')
