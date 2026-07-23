@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/addDoctor.css">
 </head>
 <body>
-
-    <% if (error) { %>
-        <p><%= error %></p>
-     
-    <% } %>
-
 
     <div>
         <div>
             <a href="/admin/specialization/doctor/<%= specId %>">back</a>
         </div>
-
+        
+        <% if (error) { %>
+            <p><%= error %></p>
+         
+        <% } %>
         <form action="/admin/specialization/doctor/<%= specId %>/add" method="post" enctype="multipart/form-data">
             <div>
                 <label for="name">name</label>

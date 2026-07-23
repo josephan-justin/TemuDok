@@ -4,39 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/AddSpecialization.css">
+    <link rel="stylesheet" href="/doctorlist.css">
 </head>
 <body>
+    <div class="top-actions">
+        <a href="/admin" class="btn-link btn-back"> Back</a>
+        <a href="/admin/specialization/doctor/<%= specId %>/add" class="btn-link btn-add">+ Add Doctor</a>
+    </div>
+
     <% if (deleted) { %>
-        <h3><%= deleted %></h3>
+        <p class="success-msg"><%= deleted %></p>
     <% } %>
-
-    <div>
-        <a href="/admin">back</a>
-    </div>
-    <div>
-        <a href="/admin/specialization/doctor/<%= specId %>/add">add doctor</a>
-    </div>
-
-
 
     <div class="card-container">
         <% data.forEach(el => { %>
-            <div class="card">
+            <div class="doctor-card">
                 <img src="/<%= el.imageUrl %>" alt="<%= el.name %>">
                 <div class="card-body">
                     <h3><%= el.name %></h3>
                     <h4><%= el.Specialization.name %></h4>
                 </div>
-                <div>
+                <div class="card-footer">
                     <a href="/admin/specialization/delete/doctor/<%= specId %>/<%= el.id %>">
-                        <button type="button">delete</button>
+                        <button type="button">Delete</button>
                     </a>
-                
                 </div>
             </div>
         <% }) %>
     </div>
+    
+    
     
 </body>
 </html>

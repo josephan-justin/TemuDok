@@ -4,36 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/symptomListAdmin.css">
 </head>
 <body>
     <div>
-        <div>
-            <a href="/admin">back</a>
+        <div class="top-actions">
+            <a href="/admin" class="btn-link btn-back"> Back</a>
         </div>
-        <div style="border: 1px solid black;">
+
+        <div class="card">
             <% if (error) { %>
-                <p><%= error %></p>
-            
+                <p class="error-msg"><%= error %></p>
             <% } %>
-            <h4>add Symptom</h4>
-            <form action="/admin/specialization/symptom/<%= specId %>/add" method="post">
+
+            <h4>Add Symptom</h4>
+            <form action="/admin/specialization/symptom/<%= specId %>/add" method="post" class="inline-form">
                 <label for="name">Symptom name : </label>
                 <input type="text" name="name">
                 <input type="submit" value="SUBMIT">
             </form>
-
         </div>
 
-        <div>
-            <h2><%= data[0].Specialization.name %></h2>
-        </div>
-        <div>
-            <form action="/admin/specialization/symptom/<%= specId %>" method="get">
+        <h2 class="section-title"><%= data[0].Specialization.name %></h2>
+
+        <form action="/admin/specialization/symptom/<%= specId %>" method="get" class="search-form">
             <input type="text" name="search" placeholder="Search Name Here">
             <input type="submit" value="Search">
         </form>
-        </div>
-        <table>
+
+        <table class="data-table">
             <tr>
                 <th>No</th>
                 <th>Symptom</th>
@@ -43,8 +42,10 @@
                 <tr>
                     <td><%= i + 1 %></td>
                     <td><%= el.name %></td>
-                    <td>
-                        <a href="/dd">delete</a>
+                    <td class="action-cell">
+                        <a href="/dd" class="link-delete">
+                            <button type="button">Delete</button>
+                        </a>
                     </td>
                 </tr>
             <% }) %>

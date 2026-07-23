@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <div style="border: 1px solid black;">
+
+    <div class="card">
 
         <% if (error) { %>
-            <p><%= error %></p>
-        
+            <p class="error-msg"><%= error %></p>
         <% } %>
-        <h4>add specialization</h4>
-        <form action="/admin/add/specialization" method="post">
+
+        <h4>Add Specialization</h4>
+        <form action="/admin/add/specialization" method="post" class="inline-form">
             <label for="name">specialization name : </label>
             <input type="text" name="name">
             <input type="submit" value="SUBMIT">
@@ -21,18 +23,18 @@
 
     </div>
 
-    <div>
+    <div class="card">
 
-        <form action="/admin" method="get">
+        <form action="/admin" method="get" class="search-form">
             <input type="text" name="name" placeholder="Search Name Here">
             <input type="submit" value="Search">
         </form>
-        
+
         <% if (deleted) { %>
-            <p><%= deleted %></p>
+            <p class="success-msg"><%= deleted %></p>
         <% } %>
 
-        <table border="1">
+        <table class="data-table">
             <tr>
                 <th>No</th>
                 <th>Specialization</th>
@@ -42,13 +44,18 @@
                 <tr>
                     <td><%= i+1 %></td>
                     <td><%= el.name %></td>
-                    <td>
-                        <a href="/admin/specialization/delete/<%= el.id %>"> delete</a>
-                        <a href="/admin/specialization/doctor/<%= el.id %>"> see doctors</a>
-                        <a href="/admin/specialization/symptom/<%= el.id %>"> see symptoms</a>
+                    <td class="action-cell">
+                        <a href="/admin/specialization/delete/<%= el.id %>" class="link-delete">
+                            <button type="button">Delete</button>
+                        </a>
+                        <a href="/admin/specialization/doctor/<%= el.id %>" class="link-view">
+                            <button type="button">See Doctor</button>
+                        </a>
+                        <a href="/admin/specialization/symptom/<%= el.id %>" class="link-view">
+                            <button type="button">See Symtomps</button>
+                        </a>
                     </td>
                 </tr>
-             
             <% }) %>
         </table>
     </div>
