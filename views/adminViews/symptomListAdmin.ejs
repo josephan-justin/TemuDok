@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/symptomListAdmin.css">
+</head>
+<body>
+    <div>
+        <div class="top-actions">
+            <a href="/admin" class="btn-link btn-back"> Back</a>
+        </div>
+
+        <div class="card">
+            <% if (error) { %>
+                <p class="error-msg"><%= error %></p>
+            <% } %>
+
+            <h4>Add Symptom</h4>
+            <form action="/admin/specialization/symptom/<%= specId %>/add" method="post" class="inline-form">
+                <label for="name">Symptom name : </label>
+                <input type="text" name="name">
+                <input type="submit" value="SUBMIT">
+            </form>
+        </div>
+
+        <h2 class="section-title"><%= data[0].Specialization.name %></h2>
+
+        <form action="/admin/specialization/symptom/<%= specId %>" method="get" class="search-form">
+            <input type="text" name="search" placeholder="Search Name Here">
+            <input type="submit" value="Search">
+        </form>
+
+        <table class="data-table">
+            <tr>
+                <th>No</th>
+                <th>Symptom</th>
+                <th>Action</th>
+            </tr>
+            <% data.forEach((el,i) => { %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= el.name %></td>
+                    <td class="action-cell">
+                        <a href="/dd" class="link-delete">
+                            <button type="button">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+    
+</body>
+</html>

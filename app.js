@@ -1,20 +1,38 @@
 const express = require('express')
 const session = require('express-session')
-const app = express()
 
+const Controller = require('./controllers/homeControllers/controller')
 const userRouter = require('./routes/user')
+const routerAdmin = require('./routers/admin')
+const routerDoctor = require('./routers/doctor')
+
+const app = express()
+const port = 3000
 
 app.set('view engine', 'ejs')
-app.use(express.urlencoded({ extended: false }))
 
+app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
+app.use('/assets', express.static('assets'))
+
 app.use(session({
   secret: 'temudok-secret',
   resave: false,
   saveUninitialized: false
 }))
+
+// Landing Page
+app.get('/', Controller.home)
+
+// User
 app.use('/users', userRouter)
 
-app.listen(3000, () => {
-  console.log('Server running on port 3000')
+// Admin
+app.use('/admin', routerAdmin)
+
+// Doctor
+app.use('/doctor', routerDoctor)
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`)
 })

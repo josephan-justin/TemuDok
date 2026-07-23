@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <div class="card">
+
+        <% if (error) { %>
+            <p class="error-msg"><%= error %></p>
+        <% } %>
+
+        <h4>Add Specialization</h4>
+        <form action="/admin/add/specialization" method="post" class="inline-form">
+            <label for="name">specialization name : </label>
+            <input type="text" name="name">
+            <input type="submit" value="SUBMIT">
+        </form>
+
+    </div>
+
+    <div class="card">
+
+        <form action="/admin" method="get" class="search-form">
+            <input type="text" name="name" placeholder="Search Name Here">
+            <input type="submit" value="Search">
+        </form>
+
+        <% if (deleted) { %>
+            <p class="success-msg"><%= deleted %></p>
+        <% } %>
+
+        <table class="data-table">
+            <tr>
+                <th>No</th>
+                <th>Specialization</th>
+                <th>Action</th>
+            </tr>
+            <% data.forEach((el,i) => { %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= el.name %></td>
+                    <td class="action-cell">
+                        <a href="/admin/specialization/delete/<%= el.id %>" class="link-delete">
+                            <button type="button">Delete</button>
+                        </a>
+                        <a href="/admin/specialization/doctor/<%= el.id %>" class="link-view">
+                            <button type="button">See Doctor</button>
+                        </a>
+                        <a href="/admin/specialization/symptom/<%= el.id %>" class="link-view">
+                            <button type="button">See Symtomps</button>
+                        </a>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+
+
+
+</body>
+</html>

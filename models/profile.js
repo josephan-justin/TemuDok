@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Profile.belongsTo(models.User)
     }
+    getBirthDate() {
+      const rawValue = this.getDataValue('birthDate')
+      return rawValue ? rawValue.toISOString().split('T')[0] : null
+    }
   }
   Profile.init({
     fullName: DataTypes.STRING,
