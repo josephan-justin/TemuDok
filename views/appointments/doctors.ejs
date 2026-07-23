@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Dokter</title>
+</head>
+<body>
+    <%- include('../partials/_navbar') %>
+
+    <h1>Pilih Dokter</h1>
+
+    <% if (doctors.length === 0) { %>
+
+        <p>Tidak ada dokter yang sesuai.</p>
+
+    <% } else { %>
+
+        <% doctors.forEach(doctor => { %>
+
+            <div>
+
+                <h3>
+                    <%= doctor.doctorName %>
+                </h3>
+
+                <p>
+                    <%= doctor.Specialization.name %>
+                </p>
+
+                <a href="/appointments/book/<%= doctor.id %>?symptomIds=<%= symptomIds.join(',') %>">
+                    Pilih Dokter
+                </a>
+
+            </div>
+
+            <hr>
+
+        <% }) %>
+
+    <% } %>
+
+</body>
+</html>

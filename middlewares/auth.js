@@ -1,5 +1,6 @@
 function isLoggedIn(req, res, next){
     if(!req.session.userId){
+        req.session.returnTo = req.originalUrl
         return res.redirect('/users/login')
     }
     next()
@@ -13,14 +14,14 @@ function isUser(req, res, next){
 }
 
 function isDoctor(req, res, next){
-    if(res.session.role !== 'doctor'){
+    if(req.session.role !== 'doctor'){
         return res.redirect('/')
     }
     next()
 }
 
 function isAdmin(req, res, next){
-    if(res.session.role !== 'admin'){
+    if(req.session.role !== 'admin'){
         return res.redirect('/')
     }
     next()

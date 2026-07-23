@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reschedule Appointment</title>
+</head>
+<body>
+    <%- include('../partials/_navbar') %>
+
+    <h1>Reschedule Appointment</h1>
+
+    <h3><%= appointment.Doctor.name %></h3>
+
+    <p>
+        Spesialisasi:
+        <%= appointment.Doctor.Specialization.name %>
+    </p>
+
+    <form
+        action="/appointments/<%= appointment.id %>/edit"
+        method="POST"
+    >
+
+        <div>
+            <label>Tanggal Appointment</label>
+
+            <input
+                type="date"
+                name="appointmentDate"
+                value="<%= appointment.getAppointmentDate() %>"
+                min="<%= new Date().toISOString().split('T')[0] %>"
+                required
+            >
+        </div>
+
+        <div>
+            <label>Keluhan</label>
+
+            <textarea name="complaint"><%= appointment.complaint %></textarea>
+        </div>
+
+        <button type="submit">
+            Simpan Perubahan
+        </button>
+
+    </form>
+
+</body>
+</html>

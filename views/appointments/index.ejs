@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Appointments</title>
+</head>
+<body>
+    <%- include('../partials/_navbar') %>
+
+    <h1>My Appointments</h1>
+
+    <% if (appointments.length === 0) { %>
+
+        <p>Belum ada appointment.</p>
+
+    <% } else { %>
+
+        <% appointments.forEach(appointment => { %>
+
+            <div>
+                <h3>
+                    <%= appointment.Doctor.name %>
+                </h3>
+
+                <p>
+                    Spesialisasi:
+                    <%= appointment.Doctor.Specialization.name %>
+                </p>
+
+                <p>
+                    Tanggal:
+                    <%= appointment.getAppointmentDate() %>
+                </p>
+
+                <p>
+                    Keluhan:
+                    <%= appointment.complaint %>
+                </p>
+
+                <p>
+                    Status:
+                    <%= formatStatus(appointment.status) %>
+                </p>
+
+                <p>Gejala:</p>
+
+                <ul>
+                    <% appointment.Symptoms.forEach(symptom => { %>
+                        <li><%= symptom.name %></li>
+                    <% }) %>
+                </ul>
+
+                <% if (appointment.status === 'pending') { %>
+
+                    <a href="/appointments/<%= appointment.id %>/edit">
+                        Reschedule
+                    </a>
+
+                    <a href="/appointments/<%= appointment.id %>/cancel">
+                        Cancel Appointment
+                    </a>
+
+                <% } %>
+
+            </div>
+
+            <hr>
+
+        <% }) %>
+
+    <% } %>
+
+</body>
+</html>

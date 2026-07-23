@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Gejala</title>
+</head>
+<body>
+    <%- include('../partials/_navbar') %>
+
+    <h1>Pilih Gejala Anda</h1>
+
+    <form action="/appointments/symptoms" method="POST">
+
+        <% symptoms.forEach(symptom => { %>
+
+            <div>
+                <input
+                    type="checkbox"
+                    name="symptomIds"
+                    value="<%= symptom.id %>"
+                >
+
+                <label>
+                    <%= symptom.name %>
+                    - <%= symptom.Specialization.name %>
+                </label>
+            </div>
+
+        <% }) %>
+
+        <button type="submit">
+            Cari Dokter
+        </button>
+
+    </form>
+
+</body>
+</html>

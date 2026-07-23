@@ -9,6 +9,9 @@ router.get('/login', UserController.getLogin)
 router.post('/login', UserController.postLogin)
 router.get('/logout', UserController.logout)
 
+// Profile
 router.get('/profile', isLoggedIn, isUser, UserController.showProfile)
+router.get('/profile/edit', isLoggedIn, isUser, UserController.getEditProfile)
+router.post('/profile/edit', isLoggedIn, isUser, UserController.postEditProfile)
 
 module.exports = router

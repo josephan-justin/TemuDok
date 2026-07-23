@@ -1,6 +1,8 @@
 const Controller = require('../controllers/adminControllers/controller')
+const { isLoggedIn, isAdmin } = require('../middlewares/auth')
 const router = require('express').Router()
 const multer = require('multer')
+
 const storage = multer.diskStorage({
     destination : function(req,file,cb){
         cb(null,'./assets/')
@@ -11,6 +13,7 @@ const storage = multer.diskStorage({
 })
 const upload = multer({storage :storage})
 
+router.use(isLoggedIn, isAdmin)
 
 router.get('/', Controller.admin)
 router.post('/add/specialization', Controller.postAddSpecialization)

@@ -51,12 +51,14 @@ class UserController {
         req.session.userId = user.id
         req.session.role = user.role
 
-        if(user.role === 'admin'){
-            res.redirect('/admin')
-        } else if(user.role === 'doctor'){
-            res.redirect('/doctor/appointments')
-        } else{
-            res.redirect('/')
+        if (user.role === 'admin') {
+          res.redirect('/admin')
+        } else if (user.role === 'doctor') {
+          res.redirect('/doctor')
+        } else {
+          const returnTo = req.session.returnTo || '/appointments'
+          delete req.session.returnTo
+          res.redirect(returnTo)
         }
     } catch (error) {
         res.send(error)
@@ -79,7 +81,7 @@ class UserController {
 
   static async showProfile(req, res){
     try {
-      const user = await User.finByPk(req.session.userId, {
+      const user = await User.findByPk(req.session.userId, {
         include : Profile
       })
 
@@ -88,6 +90,44 @@ class UserController {
       res.send(error)
     }
   }
+
+  static async getEditProfile(req, res) {
+    try {
+      const profile = await Profile.findOne({
+        where: {
+          UserId: req.session.userId
+        }
+      })
+
+      res.render('users/editProfile', { profile })
+    } catch (error) {
+      res.send(error)
+    }
+  }
+
+  static async postEditProfile(req, res) {
+    try {
+      const { fullName, birthDate, gender } = req.body
+
+      await Profile.update(
+        {
+          fullName,
+          birthDate,
+          gender
+        },
+        {
+          where: {
+            UserId: req.session.userId
+          }
+        }
+      )
+
+      res.redirect('/users/profile')
+    } catch (error) {
+      res.send(error)
+    }
+  }
+
 }
 
 module.exports = UserController

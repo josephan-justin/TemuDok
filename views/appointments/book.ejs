@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+</head>
+<body>
+    <%- include('../partials/_navbar') %>
+
+    <h1>Book Appointment</h1>
+
+    <h3><%= doctor.name %></h3>
+
+    <p>
+        Spesialisasi:
+        <%= doctor.Specialization.name %>
+    </p>
+
+    <p>Gejala yang dipilih:</p>
+
+    <ul>
+        <% symptoms.forEach(symptom => { %>
+            <li><%= symptom.name %></li>
+        <% }) %>
+    </ul>
+
+    <form
+        action="/appointments/book/<%= doctor.id %>"
+        method="POST"
+    >
+
+        <input
+            type="hidden"
+            name="symptomIds"
+            value="<%= symptomIds %>"
+        >
+
+        <div>
+            <label>Tanggal Appointment</label>
+
+            <input
+                type="date"
+                name="appointmentDate"
+                min="<%= new Date().toISOString().split('T')[0] %>"
+                required
+            >
+        </div>
+
+        <div>
+            <label>Keluhan Tambahan</label>
+
+            <textarea
+                name="complaint"
+                placeholder="Ceritakan keluhan tambahan Anda"
+            ></textarea>
+        </div>
+
+        <button type="submit">
+            Book Appointment
+        </button>
+
+    </form>
+
+</body>
+</html>
