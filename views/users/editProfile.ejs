@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <%- include('../partials/_navbar') %>
+    
+    <h1>Edit Profile</h1>
+
+    <form action="/users/profile/edit" method="POST">
+
+        <div>
+            <label>Nama Lengkap</label>
+            <input
+                type="text"
+                name="fullName"
+                value="<%= profile.fullName %>"
+            >
+        </div>
+
+        <div>
+            <label>Tanggal Lahir</label>
+            <input
+                type="date"
+                name="birthDate"
+                value="<%= profile.birthDate.toISOString().split('T')[0] %>"
+            >
+        </div>
+
+        <div>
+            <label>Jenis Kelamin</label>
+            <select name="gender">
+                <option value="Laki-laki"
+                    <%= profile.gender === 'Laki-laki' ? 'selected' : '' %>>
+                    Laki-laki
+                </option>
+
+                <option value="Perempuan"
+                    <%= profile.gender === 'Perempuan' ? 'selected' : '' %>>
+                    Perempuan
+                </option>
+            </select>
+        </div>
+
+        <button type="submit">Simpan Perubahan</button>
+
+    </form>
+
+</body>
+</html>

@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         through: models.AppointmentSymptom
       })
     }
+    
     getAppointmentDate() {
       const rawValue = this.getDataValue('appointmentDate')
       return rawValue ? rawValue.toISOString().split('T')[0] : null

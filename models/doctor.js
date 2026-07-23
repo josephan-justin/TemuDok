@@ -4,11 +4,18 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Doctor extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+    static async getAllDoctors() {
+      return await Doctor.findAll({
+        include: {
+          association: 'Specialization'
+        }
+      })
+    }
+
+    get doctorName() {
+      return `Dr. ${this.name}`
+    }
+
     static associate(models) {
       Doctor.belongsTo(models.Specialization)
       Doctor.hasMany(models.Appointment)

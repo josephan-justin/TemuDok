@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - TemuDok</title>
+</head>
+<body>
+
+    <h1>Daftar TemuDok</h1>
+
+    <form action="/users/register" method="POST">
+        <div>
+            <label>Email</label>
+            <input type="email" name="email">
+        </div>
+
+        <div>
+            <label>Password</label>
+            <input type="password" name="password">
+        </div>
+
+        <div>
+            <label>Nama Lengkap</label>
+            <input type="text" name="fullName">
+        </div>
+
+        <div>
+            <label>Tanggal Lahir</label>
+            <input type="date" name="birthDate">
+        </div>
+
+        <div>
+            <label>Jenis Kelamin</label>
+            <select name="gender">
+                <option value="">-- Pilih Jenis Kelamin --</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+        </div>
+
+        <button type="submit">Daftar</button>
+    </form>
+
+    <p>
+        Sudah punya akun?
+        <a href="/users/login">Login</a>
+    </p>
+
+</body>
+</html>

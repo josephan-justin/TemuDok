@@ -1,0 +1,28 @@
+<nav>
+    <a href="/">TemuDok</a>
+
+    <% if (!userId) { %>
+
+        <a href="/users/login">Login</a>
+        <a href="/users/register">Register</a>
+
+    <% } else if (role === 'user') { %>
+
+        <a href="/appointments/symptoms">Mulai Konsultasi</a>
+        <a href="/appointments">My Appointments</a>
+        <a href="/users/profile">Profile</a>
+        <a href="/users/logout">Logout</a>
+
+    <% } else if (role === 'admin') { %>
+
+        <a href="/admin">Dashboard Admin</a>
+        <a href="/users/logout">Logout</a>
+
+    <% } else if (role === 'doctor') { %>
+
+        <a href="/doctor">Dashboard Doctor</a>
+        <a href="/users/logout">Logout</a>
+
+    <% } %>
+
+</nav>
