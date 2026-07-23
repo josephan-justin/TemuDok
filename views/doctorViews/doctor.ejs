@@ -4,33 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/doctor.css">
 </head>
 <body>
-    <div>
-        <div>
-            <a href="/">back</a>
+    <div class="card">
+        <div class="top-actions">
+            <a href="/" class="btn-link btn-back"> back</a>
         </div>
-        <table border="1">
-            <tr>
-                <th>No.</th>
-                <th>Name</th>
-                <th>Total Patien</th>
-                <th>Appointment</th>
-            </tr>
-            <% data.forEach((el,i) => { %>
-                <tr>
-                    <td><%= i+1 %></td>
-                    <td><%= el.name %></td>
-                    <td><%= el.Appointments.length%></td>
-                    <td>
-                        <a href="/doctor/appointment/<%= el.id %>">detail</a>
-                    </td>
-                </tr>
-             
-            <% }) %>
 
-        </table>
-        
+        <h2 class="section-title">Daftar Dokter</h2>
+
+        <% if (data.length === 0) { %>
+            <div class="error-msg">no doctor.</div>
+        <% } else { %>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Total Patient</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach((el, i) => { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= el.name %></td>
+                            <td><%= el.Appointments.length %></td>
+                            <td class="action-cell">
+                                <a href="/doctor/appointment/<%= el.id %>" class="link-view">
+                                    <button type="button">Detail</button>
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
     </div>
     
 </body>
