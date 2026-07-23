@@ -76,6 +76,18 @@ class UserController {
         res.send(error)
     }
   }
+
+  static async showProfile(req, res){
+    try {
+      const user = await User.finByPk(req.session.userId, {
+        include : Profile
+      })
+
+      res.render('users/profile', {user})
+    } catch (error) {
+      res.send(error)
+    }
+  }
 }
 
 module.exports = UserController
