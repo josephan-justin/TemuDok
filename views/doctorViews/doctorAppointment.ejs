@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <a href="/">back</a>
+        </div>
+        <h1><%= data.name %></h1>
+        <table border="1">
+            <tr>
+                <th>No.</th>
+                <th>Patient Name</th>
+                <th>Date of Birth</th>
+                <th>gender</th>
+                <th>Appointment Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <% data.Appointments.forEach((el,i) => { %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= el.User.Profile.fullName %></td>
+                    <td><%= el.User.Profile.getBirthDate()%></td>
+                    <td><%= el.User.Profile.gender%></td>
+                    <td><%= el.getAppointmentDate() %></td>
+                    <td><%= el.status%></td>
+                    <td>
+                        <a href="/doctor/appointment/done/<%= el.id %>/<%= data.id %>">done</a>
+                    </td>
+                </tr>
+             
+            <% }) %>
+            
+        </table>
+        
+    </div>
+    
+</body>
+</html>

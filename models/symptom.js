@@ -17,8 +17,16 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Symptom.init({
-    name: DataTypes.STRING,
-    SpecializationId: DataTypes.INTEGER
+    name: {
+      type : DataTypes.STRING,
+      allowNull: false,
+      validate : {
+        notNull: { msg: ' Symptom Name is required' },
+        notEmpty: { msg: 'Symptom Name is required' },
+      }
+    },
+    SpecializationId: DataTypes.INTEGER,
+      
   }, {
     sequelize,
     modelName: 'Symptom',

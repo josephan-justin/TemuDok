@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <a href="/">back</a>
+        </div>
+        <table border="1">
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Total Patien</th>
+                <th>Appointment</th>
+            </tr>
+            <% data.forEach((el,i) => { %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= el.name %></td>
+                    <td><%= el.Appointments.length%></td>
+                    <td>
+                        <a href="/doctor/appointment/<%= el.id %>">detail</a>
+                    </td>
+                </tr>
+             
+            <% }) %>
+
+        </table>
+        
+    </div>
+    
+</body>
+</html>
