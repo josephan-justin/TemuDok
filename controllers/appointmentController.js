@@ -156,7 +156,7 @@ class AppointmentController {
 
             // Kirim email
             await transporter.sendMail({
-                from: 'emailkamu@gmail.com',
+                from: 'email pengirim',
                 to: user.email,
                 subject: 'Konfirmasi Appointment TemuDok',
                 text: `
