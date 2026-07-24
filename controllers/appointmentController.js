@@ -149,14 +149,14 @@ class AppointmentController {
             const transporter = nodemailer.createTransport({
             service: 'gmail',
                 auth: {
-                    user: 'akun anda',
-                    pass: 'passnodemailer'
+                    user: 'josephanjustin2@gmail.com',
+                    pass: 'afju fxbf mfsl qgcd'
                 }
             })
 
             // Kirim email
             await transporter.sendMail({
-                from: 'email pengirim',
+                from: 'josephanjustin2@gmail.com',
                 to: user.email,
                 subject: 'Konfirmasi Appointment TemuDok',
                 text: `
