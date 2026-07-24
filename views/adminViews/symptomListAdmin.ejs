@@ -18,6 +18,10 @@
                 <p class="error-msg"><%= error %></p>
             <% } %>
 
+            <% if (info) { %>
+                <p class="error-msg"><%= info %></p>
+            <% } %>
+
             <h4>Add Symptom</h4>
             <form action="/admin/specialization/symptom/<%= specId %>/add" method="post" class="inline-form">
                 <label for="name">Symptom name : </label>
@@ -44,7 +48,7 @@
                     <td><%= i + 1 %></td>
                     <td><%= el.name %></td>
                     <td class="action-cell">
-                        <a href="/dd" class="link-delete">
+                        <a href="/admin/specialization/symptom/<%= specId %>/delete/<%= el.id %>" class="link-delete">
                             <button type="button">Delete</button>
                         </a>
                     </td>

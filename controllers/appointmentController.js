@@ -149,8 +149,8 @@ class AppointmentController {
             const transporter = nodemailer.createTransport({
             service: 'gmail',
                 auth: {
-                    user: 'email pengirim',
-                    pass: 'APP_PASSWORD'
+                    user: 'akun anda',
+                    pass: 'passnodemailer'
                 }
             })
 
